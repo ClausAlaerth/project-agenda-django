@@ -4,7 +4,8 @@
 *.pyc
 __pycache__
 db.sqlite3
-media
+media/
+static/
 
 # Misc #
 .commands/
@@ -13,7 +14,7 @@ commands/
 commands/instructions.md
 
 # Backup files # 
-*.bak 
+*.bak
 
 # If you are using PyCharm # 
 # User-specific stuff
