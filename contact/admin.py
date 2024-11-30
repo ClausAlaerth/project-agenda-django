@@ -11,6 +11,7 @@ class ContactAdmin(admin.ModelAdmin):
         "first_name",
         "last_name",
         "phone",
+        "category",
     )
 
     ordering = ("id",)
@@ -36,3 +37,10 @@ class ContactAdmin(admin.ModelAdmin):
         "id",
         "phone",
     )
+
+
+@admin.register(models.Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+
+    ordering = ("id",)
