@@ -6,12 +6,10 @@ __pycache__
 db.sqlite3
 media/
 static/
+project/local_settings.py
 
 # Misc #
-.commands/
 commands/
-.commands/instructions.md
-commands/instructions.md
 
 # Backup files # 
 *.bak

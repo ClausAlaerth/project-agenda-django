@@ -1,3 +1,5 @@
+# type: ignore
+
 import os
 import sys
 from datetime import datetime
@@ -37,9 +39,9 @@ if __name__ == '__main__':
     for _ in range(NUMBER_OF_OBJECTS):
         profile = fake.profile()
         email = profile['mail']
-        first_name, last_name = profile['name'].split(' ', 1)
+        first_name, last_name = profile['name'].split(' ', 1)  # type error
         phone = fake.phone_number()
-        created_date: datetime = fake.date_this_year()
+        created_date: datetime = fake.date_this_year()  # type error
         description = fake.text(max_nb_chars=100)
         category = choice(django_categories)
 
