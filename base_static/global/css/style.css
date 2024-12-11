@@ -85,7 +85,12 @@
     list-style: none;
     display: flex;
     justify-content: center;
-    flex-flow: row wrap;
+    flex-flow: row wrap
+  }
+
+  /* Adicionado pós aula */
+  .menu-item {
+    display: flex;
   }
   
   .menu-link {
