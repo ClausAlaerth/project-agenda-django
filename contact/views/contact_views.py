@@ -72,11 +72,16 @@ def search(request):
         ) \
         .order_by("-id")[:100]
 
+    paginator = Paginator(contacts, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     # print(contacts.query)
 
     context = {
-        "contacts": contacts,
+        "page_obj": page_obj,
         "site_title": "Search - ",
+        "search_value": search_value,
     }
 
     return render(
