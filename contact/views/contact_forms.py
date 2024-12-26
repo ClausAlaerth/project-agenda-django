@@ -8,9 +8,12 @@ from contact.forms import ContactForm
 
 def create(request):
     if request.method == "POST":
+
+        form = ContactForm(request.POST)
+
         context = {
             "site_title": "Create Contact - ",
-            "form": ContactForm(request.POST)
+            "form": form
         }
 
         return render(
