@@ -29,12 +29,8 @@ class ContactForm(forms.ModelForm):
         model = Contact
 
         fields = (
-            "first_name",
-            "last_name",
-            "phone",
-            "email",
-            "description",
-            "category",
+            "first_name", "last_name", "phone",
+            "email", "description", "category",
         )
 
         # widgets = {
