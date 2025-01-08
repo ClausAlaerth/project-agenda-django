@@ -25,6 +25,12 @@
               <p class="help-text">{{ field.help_text }}</p>
             {% endif %}
           </div>
+
+          {% if field.name == "pictures" and field.value.url %}
+            <div class="form-group">
+              <img src="{{ field.value.url }}" alt="">
+            </div>
+          {% endif %}
         {% endfor %}
       </div>
 
