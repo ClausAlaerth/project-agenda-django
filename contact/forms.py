@@ -59,9 +59,18 @@ class ContactForm(forms.ModelForm):
 
 class RegisterForm(UserCreationForm):
 
-    first_name = forms.CharField(required=True)
-    last_name = forms.CharField(required=True)
-    email = forms.EmailField(required=True)
+    first_name = forms.CharField(
+        required=True,
+        min_length=3,
+    )
+    last_name = forms.CharField(
+        required=True,
+        min_length=3,
+    )
+    email = forms.EmailField(
+        required=True,
+        min_length=3,
+    )
 
     class Meta:
 
@@ -82,3 +91,5 @@ class RegisterForm(UserCreationForm):
                 "email",
                 ValidationError("Esse e-mail já existe.", code="invalid")
             )
+
+        return email
