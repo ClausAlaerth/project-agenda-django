@@ -18,7 +18,7 @@ def register(request):
             return redirect("contact:index")
 
     context = {
-        "title": "Registrar Usuário - ",
+        "site_title": "Registrar - ",
         "form": form
     }
 
