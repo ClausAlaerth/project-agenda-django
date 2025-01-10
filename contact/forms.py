@@ -2,6 +2,7 @@ from django.core.exceptions import ValidationError
 from django import forms
 from contact.models import Contact
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 class ContactForm(forms.ModelForm):
@@ -24,9 +25,9 @@ class ContactForm(forms.ModelForm):
         )
 
     def clean(self):
-        cleaned_data = self.cleaned_data
-        first_name = cleaned_data.get("first_name")
-        last_name = cleaned_data.get("last_name")
+
+        first_name = self.cleaned_data.get("first_name")
+        last_name = self.cleaned_data.get("last_name")
 
         if first_name == last_name:
 
@@ -41,6 +42,7 @@ class ContactForm(forms.ModelForm):
         return super().clean()
 
     def clean_first_name(self):
+
         first_name = self.cleaned_data.get("first_name")
 
         if first_name == "ABC":
@@ -56,4 +58,27 @@ class ContactForm(forms.ModelForm):
 
 
 class RegisterForm(UserCreationForm):
-    ...
+
+    first_name = forms.CharField(required=True)
+    last_name = forms.CharField(required=True)
+    email = forms.EmailField(required=True)
+
+    class Meta:
+
+        model = User
+
+        fields = (
+            "first_name", "last_name", "email",
+            "username", "password1", "password2",
+        )
+
+    def clean_email(self):
+
+        email = self.cleaned_data.get("email")
+
+        if User.objects.filter(email=email).exists():
+
+            self.add_error(
+                "email",
+                ValidationError("Esse e-mail já existe.", code="invalid")
+            )
