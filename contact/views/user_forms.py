@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from contact.forms import RegisterForm
+from contact.forms import RegisterForm, RegisterUpdateForm
 from django.contrib import messages, auth
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -28,6 +28,43 @@ def register(request):
         "contact/register.html",
         context=context
     )
+
+
+def user_update(request):
+
+    form = RegisterUpdateForm(instance=request.user)
+
+    if request.method != "POST":
+
+        context = {
+            "site_title": "Atualizar Usuário - ",
+            "form": form
+        }
+
+        return render(
+            request,
+            "contact/user_update.html",
+            context=context
+        )
+
+    form = RegisterUpdateForm(data=request.POST, instance=request.user)
+
+    if not form.is_valid():
+
+        context = {
+            "site_title": "Atualizar Usuário - ",
+            "form": form
+        }
+
+        return render(
+            request,
+            "contact/user_update.html",
+            context=context
+        )
+
+    form.save()
+
+    return redirect("contact:user_update")
 
 
 def login_view(request):
