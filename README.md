@@ -5,6 +5,12 @@ Um aplicativo web simples, com o intuito de observar meu progresso utilizando o 
 Para utilizar o aplicativo em desenvolvimento, lembre-se de instalar as dependências presentes em "requirements.txt" e executar os seguintes comandos, para que o Django sirva sua aplicação localmente:
 
 ```
+python(sua-versao) manage.py createsuperuser
+```
+
+Após inserir o que será seu usuário e senha do ambiente de administração do Django, continue o processo executando as linhas abaixo:
+
+```
 python(sua-versao) manage.py makemigrations
 python(sua-versao) manage.py migrate
 python(sua-versao) manage.py runserver
